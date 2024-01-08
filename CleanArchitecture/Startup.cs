@@ -4,6 +4,9 @@ using CleanArchitecture.Configuration;
 using CleanArchitecture.Filters;
 using Serilog;
 using CleanArchitecture.Api.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace CleanArchitecture.Api
 {
