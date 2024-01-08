@@ -26,5 +26,15 @@ namespace CleanArchitecture.Infrastructure
         {
            return await FindAsync(x => x.Username == username && x.Password == password, cancellationToken);
         }
+
+        public async Task<bool> IsUniqueUsername(string username, CancellationToken cancellationToken = default)
+        {
+            var result = FindAsync(x => x.Username == username, cancellationToken);
+            if (result != null)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
