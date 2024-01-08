@@ -2,7 +2,9 @@
 using CleanArchitecture.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace CleanArchitecture.Configuration
 {
@@ -16,17 +18,17 @@ namespace CleanArchitecture.Configuration
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
             services.AddHttpContextAccessor();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(
-                    JwtBearerDefaults.AuthenticationScheme,
-                    options =>
-                    {
-                        options.Authority = configuration.GetSection("Security.Bearer:Authority").Get<string>();
-                        options.Audience = configuration.GetSection("Security.Bearer:Audience").Get<string>();
-
-                        options.TokenValidationParameters.RoleClaimType = "role";
-                        options.SaveToken = true;
-                    });
+            services.AddAuthentication("Bearer").AddJwtBearer(o =>
+            {
+                o.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("asdfaefalsvlkaslekdvnalskenv"))
+                };
+            });
 
             services.AddAuthorization(ConfigureAuthorization);
 
