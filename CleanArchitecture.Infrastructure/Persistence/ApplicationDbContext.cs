@@ -20,6 +20,7 @@ namespace CleanArchitecture.Infrastructure.Persistence
         public DbSet<Product> Products { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         public DbSet<Voucher> Vouchers { get; set; }
 
@@ -31,6 +32,7 @@ namespace CleanArchitecture.Infrastructure.Persistence
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new VoucherConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
 
         
