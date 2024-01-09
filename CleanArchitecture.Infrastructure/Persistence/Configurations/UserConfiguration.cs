@@ -14,6 +14,13 @@ namespace CleanArchitecture.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasKey(x=>x.Id);
+
+            builder.Property(x => x.RoleId).IsRequired();
+
+            builder.HasOne(u => u.Role)
+                .WithOne()
+                .HasForeignKey<User>(u => u.RoleId);
         }
+
     }
 }
