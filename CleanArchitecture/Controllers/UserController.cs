@@ -2,6 +2,7 @@
 using CleanArchitecture.Application.Common.Security;
 using CleanArchitecture.Application.Orders.CreateOrder;
 using CleanArchitecture.Application.Users.CreateUser;
+using CleanArchitecture.Application.Users.UpdateUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
@@ -19,20 +20,20 @@ namespace CleanArchitecture.Api.Controllers
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        [HttpPost("register")]
+        [HttpPut("update-user")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<Guid>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<Guid>>> Register(
-                    [FromBody] RegisterRequestCommand command,
+        public async Task<ActionResult<JsonResponse<Guid>>> Update(
+                    [FromBody] UpdateUserCommand command,
                     CancellationToken cancellationToken = default)
         {
             var result = await _mediator.Send(command, cancellationToken);
             //return CreatedAtAction(nameof(GetOrderById), new { id = result }, new JsonResponse<Guid>(result));
-            return CreatedAtAction(nameof(Register), new { id = result }, new JsonResponse<Guid>(result));
+            return CreatedAtAction(nameof(Update), new { id = result }, new JsonResponse<Guid>(result));
         }
     }
 }

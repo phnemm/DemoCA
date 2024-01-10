@@ -30,6 +30,7 @@
     <Folder Include="Orders\GetOrders\" />
     <Folder Include="Orders\UpdateOrder\" />
     <Folder Include="Products\" />
+    <Folder Include="Users\DeleteUser\" />
   </ItemGroup>
 
 </Project>
