@@ -31,7 +31,8 @@ namespace CleanArchitecture.Infrastructure
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
-            services.AddTransient< IVoucherRepository, VoucherRepository>();
+            services.AddTransient< IVoucherRepository, VoucherRepository>();      
+            services.AddTransient<IRoleRepository, RoleRepository>();
             return services;
         }
     }
