@@ -32,9 +32,9 @@ namespace CleanArchitecture.Infrastructure
             var result = FindAsync(x => x.Username == username, cancellationToken);
             if (result != null)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
     }
 }
