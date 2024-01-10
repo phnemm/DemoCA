@@ -1,5 +1,6 @@
 ﻿using CleanArchitecture.Api.Controllers.ResponseTypes;
 using CleanArchitecture.Application.Orders.CreateOrder;
+using CleanArchitecture.Application.Orders;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ namespace CleanArchitecture.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class OrdersController : ControllerBase
     {
         private readonly ISender _mediator;
@@ -27,7 +28,7 @@ namespace CleanArchitecture.Api.Controllers
         /// <response code="403">Forbidden request.</response>
         /// 
 
-        
+
         [HttpPost("order")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<Guid>), StatusCodes.Status201Created)]

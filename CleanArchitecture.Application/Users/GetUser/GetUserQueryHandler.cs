@@ -29,9 +29,9 @@ namespace CleanArchitecture.Application.Authenticate.Login
                 u => u.Username == request.userName && u.Password == request.password,
                 cancellationToken: cancellationToken
                 );
-        if (user == null)
-            throw new NotFoundException($"Could not find UserName '{request.userName}'");
-        return user.MapToUserDto(_mapper);
+            if (user == null)
+                throw new NotFoundException($"Could not find UserName '{request.userName}'");
+            return user.MapToUserDto(_mapper);
         }
     }
 }
