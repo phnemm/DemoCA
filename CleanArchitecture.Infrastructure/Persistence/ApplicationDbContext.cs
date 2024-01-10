@@ -29,6 +29,7 @@ namespace CleanArchitecture.Infrastructure.Persistence
             ConfigureModel(modelBuilder);
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new StoreConfiguration());
         }
 
         

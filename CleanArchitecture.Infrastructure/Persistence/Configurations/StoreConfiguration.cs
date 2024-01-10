@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Infrastructure.Persistence.Configurations
 {
-    public class StoreConfiguration
+    public class StoreConfiguration : IEntityTypeConfiguration<Store>
     {
         public void Configure(EntityTypeBuilder<Store> builder)
         {
