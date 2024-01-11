@@ -12,5 +12,7 @@ namespace CleanArchitecture.Domain.Entities
 
         public float Percent { get; set; }
         public int Quantity { get; set; }
+
+        //abs
     }
 }
