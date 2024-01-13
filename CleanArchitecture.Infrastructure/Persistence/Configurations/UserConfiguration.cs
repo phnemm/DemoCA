@@ -18,8 +18,8 @@ namespace CleanArchitecture.Infrastructure.Persistence.Configurations
             builder.Property(x => x.RoleId).IsRequired();
 
             builder.HasOne(u => u.Role)
-                .WithOne()
-                .HasForeignKey<User>(u => u.RoleId);
+                .WithMany()
+                .HasForeignKey(u => u.RoleId);
         }
 
     }

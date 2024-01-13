@@ -1,5 +1,4 @@
-﻿using CleanArchitecture.Application.Orders.CreateOrder;
-using CleanArchitecture.Domain.Entities;
+﻿using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.Repositories;
 using MediatR;
 using System;
@@ -7,29 +6,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArchitecture.Domain.Entities;
 
 namespace CleanArchitecture.Application.Users.CreateUser
 {
     public class RegisterRequestCommandHandler : IRequestHandler<RegisterRequestCommand, Guid>
     {
-        IUserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
         public RegisterRequestCommandHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
-        public async Task<Guid> Handle(RegisterRequestCommand request, CancellationToken cancellationToken)
-        {
-            var User = new Domain.Entities.User
-            {
-                Id = Guid.NewGuid(),
-                Username = request.Username,
-                Password = request.Password,
-            };
 
-            _userRepository.Add(User);
+        public async Task<Guid> Handle(RegisterRequestCommand command, CancellationToken cancellationToken)
+        {
+            var add = new User()
+            {
+                Username = command.Username,
+                Password = command.Password,
+            };
+            add.RoleId = Guid.Parse("441D0654-FED4-4182-40FF-08DC11C06FC4");
+            Thread.Sleep(1000);
+            _userRepository.Add(add);
             await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-            return User.Id;
-        }
+            return add.Id;
+        }  
     }
 }

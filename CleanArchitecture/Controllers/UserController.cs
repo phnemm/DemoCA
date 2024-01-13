@@ -1,7 +1,5 @@
 ﻿using CleanArchitecture.Api.Controllers.ResponseTypes;
 using CleanArchitecture.Application.Common.Security;
-using CleanArchitecture.Application.Orders.CreateOrder;
-using CleanArchitecture.Application.Users.CreateUser;
 using CleanArchitecture.Application.Users.DeleteUser;
 using CleanArchitecture.Application.Users.UpdateUser;
 using MediatR;

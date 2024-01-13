@@ -16,5 +16,7 @@ namespace CleanArchitecture.Domain.Repositories
         Task<User?> FindByUsernameAndPassword(string username, string password, CancellationToken cancellationToken = default);
 
         Task<bool> IsUniqueUsername(string username, CancellationToken cancellationToken = default);
+
+        Task<List<User>> GetUserByRole(string role, CancellationToken cancellationToken = default);
     }
 }
