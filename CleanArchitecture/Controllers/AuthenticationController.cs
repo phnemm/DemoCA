@@ -56,7 +56,6 @@ namespace CleanArchitecture.Api.Controllers
                     CancellationToken cancellationToken = default)
         {
             var result = await _mediator.Send(command, cancellationToken);
-            //return CreatedAtAction(nameof(GetOrderById), new { id = result }, new JsonResponse<Guid>(result));
             return CreatedAtAction(nameof(Register), new { id = result }, new JsonResponse<Guid>(result));
         }
     }

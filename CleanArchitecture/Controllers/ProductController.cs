@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Api.Controllers.ResponseTypes;
+using CleanArchitecture.Application.Common.Security;
 using CleanArchitecture.Application.Products;
 using CleanArchitecture.Application.Products.CreateProduct;
 using CleanArchitecture.Application.Products.DeleteProduct;
@@ -14,6 +15,7 @@ namespace CleanArchitecture.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly ISender _mediator;
