@@ -31,8 +31,11 @@ namespace CleanArchitecture.Infrastructure.Persistence
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new StoreConfiguration());
+<<<<<<< HEAD
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+=======
+>>>>>>> 5fd9628fd3d4598f7c52a65b4f59b44ceb6f5bad
         }
 
         

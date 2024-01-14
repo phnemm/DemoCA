@@ -105,6 +105,7 @@ namespace CleanArchitecture.Infrastructure.Migrations
                     b.ToTable("Stores");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.Role", b =>
                 {
                     b.Property<Guid>("Id")
@@ -120,6 +121,8 @@ namespace CleanArchitecture.Infrastructure.Migrations
                     b.ToTable("Roles");
                 });
 
+=======
+>>>>>>> 5fd9628fd3d4598f7c52a65b4f59b44ceb6f5bad
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
