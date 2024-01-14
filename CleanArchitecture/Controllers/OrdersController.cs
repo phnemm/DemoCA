@@ -42,7 +42,7 @@ namespace CleanArchitecture.Api.Controllers
         {
             var result = await _mediator.Send(command, cancellationToken);
             //return CreatedAtAction(nameof(GetOrderById), new { id = result }, new JsonResponse<Guid>(result));
-            return CreatedAtAction(nameof(Created), new JsonResponse<Guid>(new Guid()));
+            return CreatedAtAction(nameof(CreateOrder), new JsonResponse<Guid>(new Guid()));
         }
 
         /// <summary>
