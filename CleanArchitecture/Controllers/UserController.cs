@@ -27,12 +27,21 @@ namespace CleanArchitecture.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<Guid>>> Update(
+                    [FromRoute] Guid id,
                     [FromBody] UpdateUserCommand command,
                     CancellationToken cancellationToken = default)
         {
+
+            if (command.Id == default)
+                command.Id = id;
+            if (id != command.Id)
+                return BadRequest();
             var result = await _mediator.Send(command, cancellationToken);
-            //return CreatedAtAction(nameof(GetOrderById), new { id = result }, new JsonResponse<Guid>(result));
-            return CreatedAtAction(nameof(Update), new { id = result }, new JsonResponse<Guid>(result));
+            return result == null ? NotFound() : Ok(result);
+
+            //var result = await _mediator.Send(command, cancellationToken);
+            ////return CreatedAtAction(nameof(GetOrderById), new { id = result }, new JsonResponse<Guid>(result));
+            //return CreatedAtAction(nameof(Update), new { id = result }, new JsonResponse<Guid>(result));
         }
 
         [HttpDelete("delete-user")]

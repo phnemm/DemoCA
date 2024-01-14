@@ -10,12 +10,13 @@ namespace CleanArchitecture.Application.Users.UpdateUser
 {
     public class UpdateUserCommand : IRequest<Guid>, ICommand
     {
-        public UpdateUserCommand(string username, string password)
+        public UpdateUserCommand(Guid id, string password)
         {
-            Username = username;
+            Id = id;
             Password = password;
         }
-        public string Username { get; private set; }
+
+        public Guid Id { get; set; }
         public string Password { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace CleanArchitecture.Application.Users.UpdateUser
         }
         public async Task<Guid> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {   
-            var User = _userRepository.FindAsync(x => x.Username == request.Username).Result;
+            var User = _userRepository.FindAsync(x => x.Id == request.Id).Result;
             if(User != null) 
             { 
                 User.Password = request.Password;
