@@ -26,10 +26,15 @@ namespace CleanArchitecture.Application.Products.UpdateProduct
             var product = await _productRepository.FindAsync(p => p.Id == command.Id, cancellationToken);
             if (product == null)
                 throw new NotFoundException($"Not found {command.Id}");
-            product.Name = command.Name ?? product.Name;
-            product.Size = command.Size ?? product.Size;
-            product.Color = command.Color ?? product.Color;
-            product.Price = command.Price ?? product.Price;
+            var check = await _productRepository.IsUniqueName(command.Name, cancellationToken);
+                if (check)
+                    throw new Exception("Name must be unique");
+            product.Name = command.Name;
+            product.Size = command.Size;
+            product.Color = command.Color;
+            product.Price = command.Price;
+
+
             _productRepository.Update(product);
             await _productRepository.UnitOfWork.SaveChangesAsync();
             return product.MapToProductDto(_mapper);

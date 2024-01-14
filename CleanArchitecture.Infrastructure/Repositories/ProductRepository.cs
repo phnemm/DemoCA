@@ -25,5 +25,15 @@ namespace CleanArchitecture.Infrastructure.Repositories
         {
             return await FindAllAsync(x => ids.Contains(x.Id), cancellationToken);
         }
+
+        public async Task<bool> IsUniqueName(string name, CancellationToken cancellationToken = default)
+        {
+            var result = await FindAsync(x => x.Name.Equals(name), cancellationToken);
+            if (result == null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace CleanArchitecture.Domain.Repositories
         Task<Product?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
         Task<List<Product>> FindByIdsAsync(Guid[] ids, CancellationToken cancellationToken = default);
+        Task<bool> IsUniqueName(string name, CancellationToken cancellationToken = default);
+
     }
 }

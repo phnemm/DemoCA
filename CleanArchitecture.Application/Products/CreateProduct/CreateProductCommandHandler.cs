@@ -26,6 +26,11 @@ namespace CleanArchitecture.Application.Products.CreateProduct
                 Size = command.Size,
                 Price = command.Price,
             };
+
+            var check = await _productRepository.IsUniqueName(product.Name, cancellationToken);
+            if (check)
+                throw new Exception("Name must be unique");
+
             _productRepository.Add(product);
             await _productRepository.UnitOfWork.SaveChangesAsync();
             return product.Id;

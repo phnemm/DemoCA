@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using CleanArchitecture.Domain.Repositories;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
