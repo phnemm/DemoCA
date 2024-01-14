@@ -9,21 +9,23 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Infrastructure.Persistence.Configurations
 {
-    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Name)
                 .IsRequired();
 
-            builder.Property(x => x.Price)
+            builder.Property(x => x.Description)
                 .IsRequired();
 
-            builder.Property(x => x.Color) .IsRequired();
-            builder.Property(x => x.Size).IsRequired();
-
+            builder.HasMany(x => x.Products)
+                .WithOne(p => p.Category)
+                .HasForeignKey(p => p.CategoryId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

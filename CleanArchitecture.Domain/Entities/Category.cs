@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Domain.Entities
 {
-    public class Product
+    public class Category
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public decimal Size { get; set; }
-        public string Color { get; set; }
-        public decimal Price { get; set; }
-        public Guid CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public string Description { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; } = new List<Product>();
     }
+
 }
