@@ -15,7 +15,7 @@ namespace CleanArchitecture.Infrastructure.Persistence
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-
+        public DbSet<Category> Category { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
@@ -29,10 +29,14 @@ namespace CleanArchitecture.Infrastructure.Persistence
 
             ConfigureModel(modelBuilder);
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
+<<<<<<< HEAD
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new StoreConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+=======
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+>>>>>>> a2ad058 (add Category)
         }
 
         
