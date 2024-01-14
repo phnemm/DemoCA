@@ -6,6 +6,7 @@ using CleanArchitecture.Application.Category.UpdateCategory;
 using CleanArchitecture.Application.Categorys;
 using CleanArchitecture.Application.Orders.CreateOrder;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
@@ -14,6 +15,7 @@ namespace CleanArchitecture.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CategoryController : ControllerBase
     {
         private readonly ISender _mediator;
