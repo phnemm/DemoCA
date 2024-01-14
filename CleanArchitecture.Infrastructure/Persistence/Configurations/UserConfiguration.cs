@@ -15,6 +15,11 @@ namespace CleanArchitecture.Infrastructure.Persistence.Configurations
         {
             builder.HasKey(x=>x.Id);
 
+            builder.Property(x => x.Username).IsRequired();
+
+            builder.Property(x => x.Password).IsRequired();
+
+
             builder.Property(x => x.RoleId).IsRequired();
 
             builder.HasOne(u => u.Role)

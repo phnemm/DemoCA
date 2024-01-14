@@ -20,6 +20,10 @@ namespace CleanArchitecture.Infrastructure.Persistence.Configurations
 
             builder.Property(x => x.Price)
                 .IsRequired();
+
+            builder.Property(x => x.Color) .IsRequired();
+            builder.Property(x => x.Size).IsRequired();
+
         }
     }
 }
