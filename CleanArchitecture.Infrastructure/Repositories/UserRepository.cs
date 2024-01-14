@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CleanArchitecture.Domain.Common.Exceptions;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.Repositories;
 using CleanArchitecture.Infrastructure.Persistence;
@@ -8,6 +9,8 @@ namespace CleanArchitecture.Infrastructure
 {
     public class UserRepository : RepositoryBase<User, User, ApplicationDbContext>, IUserRepository
     {
+        private readonly IRoleRepository _roleRepository;
+
         public UserRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
@@ -26,5 +29,25 @@ namespace CleanArchitecture.Infrastructure
         {
            return await FindAsync(x => x.Username == username && x.Password == password, cancellationToken);
         }
+
+        public async Task<bool> IsUniqueUsername(string username, CancellationToken cancellationToken = default)
+        {
+            var result = await FindAsync(x => x.Username.Equals(username), cancellationToken);
+            if (result == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public async Task<List<User>> GetUserByRole(string name, CancellationToken cancellationToken = default)
+        {
+            var role = await _roleRepository.FindAsync(r => r.Name.Equals(name), cancellationToken);
+            if (role == null)
+                throw new NotFoundException($"Not found {name}");
+            var list = await FindAllAsync(u => u.RoleId == role.Id, cancellationToken);
+            return list;
+        }
+
     }
 }
