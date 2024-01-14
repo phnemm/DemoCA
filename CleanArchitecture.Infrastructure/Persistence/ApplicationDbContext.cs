@@ -30,11 +30,15 @@ namespace CleanArchitecture.Infrastructure.Persistence
             ConfigureModel(modelBuilder);
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
 <<<<<<< HEAD
+<<<<<<< HEAD
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new StoreConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
 =======
+=======
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+>>>>>>> 1e929ee (fix Migration)
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
 >>>>>>> a2ad058 (add Category)
         }

@@ -21,9 +21,16 @@ namespace CleanArchitecture.Infrastructure.Persistence.Configurations
             builder.Property(x => x.Price)
                 .IsRequired();
 
+<<<<<<< HEAD
             builder.Property(x => x.Color) .IsRequired();
             builder.Property(x => x.Size).IsRequired();
 
+=======
+            builder.HasOne(x => x.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(x => x.CategoryId)
+                .IsRequired();
+>>>>>>> 1e929ee (fix Migration)
         }
     }
 }

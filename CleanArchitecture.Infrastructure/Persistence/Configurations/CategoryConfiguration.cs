@@ -21,21 +21,11 @@ namespace CleanArchitecture.Infrastructure.Persistence.Configurations
             builder.Property(x => x.Description)
                 .IsRequired();
 
-            builder.OwnsMany(x => x.Products, ConfigureProduct);
-        }
-
-        public void ConfigureProduct(OwnedNavigationBuilder<Category, Product> builder)
-        {
-            builder.WithOwner()
-                .HasForeignKey(x => x.CategoryId);
-
-            builder.HasKey(x => x.Id);
-
-            builder.Property(x => x.Price)
-                .IsRequired();
-
-            builder.Property(x => x.Name)
-                .IsRequired();
+            builder.HasMany(x => x.Products)
+                .WithOne(p => p.Category)
+                .HasForeignKey(p => p.CategoryId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
