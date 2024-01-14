@@ -10,7 +10,7 @@ namespace CleanArchitecture.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class OrdersController : ControllerBase
     {
         private readonly ISender _mediator;
