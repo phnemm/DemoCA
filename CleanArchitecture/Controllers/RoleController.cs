@@ -91,7 +91,7 @@ namespace CleanArchitecture.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status501NotImplemented)]
         public async Task<ActionResult<RoleDto>> RemoveRole(Guid id, CancellationToken cancellationToken = default)
         {
-            var result = await _mediator.Send(RemoveRole(id: id), cancellationToken);
+            var result = await _mediator.Send(new RemoveRoleCommand(id: id), cancellationToken);
             return result == null ? NotFound() : Ok(result);
         }
     }
