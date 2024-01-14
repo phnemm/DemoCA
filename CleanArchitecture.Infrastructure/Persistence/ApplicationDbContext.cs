@@ -32,6 +32,7 @@ namespace CleanArchitecture.Infrastructure.Persistence
 <<<<<<< HEAD
 <<<<<<< HEAD
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+<<<<<<< HEAD
             modelBuilder.ApplyConfiguration(new StoreConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
@@ -41,6 +42,9 @@ namespace CleanArchitecture.Infrastructure.Persistence
 >>>>>>> 1e929ee (fix Migration)
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
 >>>>>>> a2ad058 (add Category)
+=======
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+>>>>>>> 1e929ee44c729056d68aae1287a8f73f68e6debd
         }
 
         
