@@ -31,6 +31,12 @@ namespace CleanArchitecture.Application.Stores.CreateStore
                 BranchNumber = request.BranchNumber,
             };
 
+            var checkDuplicate = _storeRepository.FindAsync(x => x.BranchNumber == request.BranchNumber || x.Address == request.Address);
+            if (checkDuplicate != null)
+            {
+                throw new Exception("Duplicated Information");
+            }
+
             _storeRepository.Add(store);
             await _storeRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
 

@@ -19,6 +19,7 @@ namespace CleanArchitecture.Application.Stores.CreateStore
 
             RuleFor(v => v.BranchNumber)
                 .NotEmpty().WithMessage("Branch number is required")
+                .GreaterThanOrEqualTo(1).WithMessage("Branch number must be greater than or equal to 1")
                 .LessThanOrEqualTo(50).WithMessage("Branch number must not exceed 50");
 
         }

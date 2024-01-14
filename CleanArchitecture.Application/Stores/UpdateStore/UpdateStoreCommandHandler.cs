@@ -30,6 +30,12 @@ namespace CleanArchitecture.Application.Stores.UpdateStore
                 throw new NotFoundException($"Could not find Store '{request.Id}'");
             }
 
+            var checkDuplicate = _storeRepository.FindAsync(x => x.BranchNumber == request.BranchNumber || x.Address == request.Address);
+            if (checkDuplicate != null)
+            {
+                throw new Exception("Duplicated Information");
+            }
+
             store.Address = request.Address;
             store.BranchNumber = request.BranchNumber;
 
