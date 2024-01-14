@@ -23,7 +23,7 @@ namespace CleanArchitecture.Application.Roles.DeleteRole
 
         public async Task<RoleDto> Handle(RemoveRoleCommand command, CancellationToken cancellationToken) 
         { 
-            var result = await this._roleRepository.FindAsync(x => x.Id ==  command.Id, cancellationToken);
+            var result = await _roleRepository.FindAsync(x => x.Id ==  command.Id, cancellationToken);
             if (result == null)
                 throw new NotFoundException("Id not found");
             _roleRepository.Remove(result);
